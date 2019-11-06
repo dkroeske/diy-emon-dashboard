@@ -1,0 +1,29 @@
+<p>Dashboard - Smartmeter DIY kit</p>
+<table mat-table [dataSource]="smartmeters" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="signature">
+        <th mat-header-cell *matHeaderCellDef>Signature</th>
+        <td [@signatureUpdateAnimation] mat-cell *matCellDef="let smartmeter">{{smartmeter.signature}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef>Last seen</th>
+        <td [@signatureUpdateAnimation] mat-cell *matCellDef="let smartmeter">{{smartmeter.timestamp | date: 'short'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="returned">
+        <th mat-header-cell *matHeaderCellDef>P<sub>returned</sub></th>
+        <td [@signatureUpdateAnimation] mat-cell *matCellDef="let smartmeter">{{smartmeter.power.returned}} W</td>
+    </ng-container>
+
+    <ng-container matColumnDef="delivered">
+        <th mat-header-cell *matHeaderCellDef>P<sub>delivered</sub></th>
+        <td [@signatureUpdateAnimation] mat-cell *matCellDef="let smartmeter">{{smartmeter.power.delivered}} W</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<!--<router-outlet></router-outlet>-->
